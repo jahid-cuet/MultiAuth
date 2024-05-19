@@ -45,6 +45,16 @@
                     @endif
                 @endauth
 
+                    {{-- @auth('teacher')
+                    <a href="{{ url('/teacher/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Teacher Dashboard</a>
+                @else
+                    <a href="{{ route('teacher.login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"> Teacher Log in</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('teacher.register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Teacher Register</a>
+                    @endif
+                @endauth --}}
+
 
 
                 </div>

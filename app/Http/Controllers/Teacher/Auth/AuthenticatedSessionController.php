@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Teacher\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\AdminLoginRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -18,20 +17,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('admin.auth.login');
+        return view('teacher.auth.login');
     }
 
     /**
      * Handle an incoming authentication request.
      */
-    public function store(AdminLoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('admin.dashboard',absolute:false));
-        // return redirect()->intended(RouteServiceProvider::adminHOME);
+        return redirect()->intended(route('teacher.dashboard',absolute:false));
     }
 
     /**
@@ -39,7 +37,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('admin')->logout();
+        Auth::guard('teacher')->logout();
 
         $request->session()->invalidate();
 
